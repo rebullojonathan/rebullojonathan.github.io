@@ -5,17 +5,17 @@
    ================================================================== */
 
 :root {
-  --lw-heading: #f5f5f5;
-  --lw-text: oklch(0.93 0.008 260);
-  --lw-text-2: oklch(0.8 0.012 260);
-  --lw-text-3: oklch(0.7 0.014 260);
+  --lw-heading: #ffffff;
+  --lw-text: oklch(0.96 0.008 255);
+  --lw-text-2: oklch(0.84 0.02 255);
+  --lw-text-3: oklch(0.74 0.03 255);
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --lw-line: oklch(1 0 0 / 14%);
   --lw-line-strong: oklch(1 0 0 / 24%);
   --lw-grid-dot: oklch(1 0 0 / 7%);
-  --lw-node-bg: oklch(0.21 0.013 260 / 0.95);
-  --lw-glow-red: oklch(0.55 0.2 25 / 0.3);
-  --lw-glow-coral: oklch(0.74 0.13 24 / 0.16);
+  --lw-node-bg: oklch(0.21 0.05 262 / 0.95);
+  --lw-glow-primary: oklch(0.55 0.22 268 / 0.32);
+  --lw-glow-accent: oklch(0.82 0.13 205 / 0.15);
   --lw-tested: oklch(0.74 0.15 155);
   --lw-progress: oklch(0.82 0.14 80);
   --lw-training: oklch(0.74 0.02 260);
@@ -24,16 +24,16 @@
 }
 
 :root.light {
-  --lw-heading: oklch(0.2 0.012 24);
-  --lw-text: oklch(0.24 0.012 24);
-  --lw-text-2: oklch(0.38 0.014 24);
-  --lw-text-3: oklch(0.47 0.014 24);
-  --lw-line: oklch(0.22 0.012 24 / 12%);
-  --lw-line-strong: oklch(0.22 0.012 24 / 22%);
-  --lw-grid-dot: oklch(0.22 0.012 24 / 10%);
+  --lw-heading: oklch(0.2 0.045 262);
+  --lw-text: oklch(0.24 0.04 262);
+  --lw-text-2: oklch(0.38 0.04 260);
+  --lw-text-3: oklch(0.47 0.035 258);
+  --lw-line: oklch(0.2 0.045 262 / 12%);
+  --lw-line-strong: oklch(0.2 0.045 262 / 22%);
+  --lw-grid-dot: oklch(0.2 0.045 262 / 10%);
   --lw-node-bg: oklch(1 0 0 / 0.95);
-  --lw-glow-red: oklch(0.6 0.18 25 / 0.14);
-  --lw-glow-coral: oklch(0.7 0.13 24 / 0.12);
+  --lw-glow-primary: oklch(0.55 0.2 268 / 0.14);
+  --lw-glow-accent: oklch(0.75 0.12 205 / 0.12);
   --lw-tested: oklch(0.5 0.13 155);
   --lw-progress: oklch(0.55 0.13 65);
   --lw-training: oklch(0.48 0.02 260);
@@ -205,10 +205,10 @@ body {
 .lw-btn-primary {
   background: var(--primary);
   color: var(--primary-foreground);
-  box-shadow: 0 10px 30px -12px var(--lw-glow-red);
+  box-shadow: 0 10px 30px -12px var(--lw-glow-primary);
 }
 .lw-btn-primary:hover {
-  box-shadow: 0 14px 40px -10px var(--lw-glow-red);
+  box-shadow: 0 14px 40px -10px var(--lw-glow-primary);
   transform: translateY(-2px);
 }
 .lw-btn-ghost {
@@ -447,8 +447,8 @@ body {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(60% 55% at 18% 35%, var(--lw-glow-red), transparent 70%),
-    radial-gradient(45% 50% at 80% 60%, var(--lw-glow-coral), transparent 70%),
+    radial-gradient(60% 55% at 18% 35%, var(--lw-glow-primary), transparent 70%),
+    radial-gradient(45% 50% at 80% 60%, var(--lw-glow-accent), transparent 70%),
     radial-gradient(circle at 1px 1px, var(--lw-grid-dot) 1px, transparent 0) 0 0 / 32px 32px;
 }
 .lw-hero::after {
@@ -931,7 +931,7 @@ body {
 .lw-flagship {
   position: relative;
   border-top: 1px solid var(--lw-line);
-  background: radial-gradient(70% 40% at 85% 0%, var(--lw-glow-red), transparent 70%);
+  background: radial-gradient(70% 40% at 85% 0%, var(--lw-glow-primary), transparent 70%);
 }
 .lw-flagship-grid {
   display: grid;
@@ -1665,7 +1665,7 @@ body {
   border: 1px solid var(--lw-line-strong);
   border-radius: 28px;
   background:
-    radial-gradient(60% 80% at 100% 0%, var(--lw-glow-red), transparent 70%),
+    radial-gradient(60% 80% at 100% 0%, var(--lw-glow-primary), transparent 70%),
     var(--card);
 }
 .lw-contact-actions {
@@ -1909,8 +1909,8 @@ body {
 }
 .lw-swap-new {
   text-shadow:
-    0 0 0.3em oklch(0.88 0.11 30 / 50%),
-    0 0 0.9em oklch(0.82 0.14 30 / 25%);
+    0 0 0.3em oklch(0.9 0.1 205 / 50%),
+    0 0 0.9em oklch(0.82 0.13 205 / 25%);
   transition:
     opacity 0.7s ease 0.85s,
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.85s,
@@ -1926,8 +1926,8 @@ body {
   transform: translateY(0.12em);
   filter: blur(6px);
   text-shadow:
-    0 0 0.6em oklch(0.9 0.12 30 / 90%),
-    0 0 1.6em oklch(0.85 0.15 30 / 70%);
+    0 0 0.6em oklch(0.93 0.1 205 / 90%),
+    0 0 1.6em oklch(0.85 0.13 215 / 70%);
 }
 @media (prefers-reduced-motion: reduce) {
   .lw-swap-strike,
@@ -1976,7 +1976,7 @@ body {
   transition: transform 0.2s ease;
 }
 .lw-footer-button:hover {
-  background: oklch(0.96 0.02 25);
+  background: oklch(0.96 0.02 255);
 }
 .lw-footer-button:hover span {
   transform: translateX(3px);
@@ -2578,7 +2578,7 @@ button:focus-visible > .lw-shot-hint {
   width: 100vw;
   height: 100vh;
   height: 100dvh;
-  background: #0a0a0c; /* solid: nothing from the page shows through */
+  background: #050b1f; /* solid: nothing from the page shows through */
   color: #f5f5f5;
   overscroll-behavior: contain;
   animation: lw-viewer-in 0.18s ease-out;
@@ -2661,7 +2661,7 @@ button:focus-visible > .lw-shot-hint {
   border-color: rgb(255 255 255 / 0.25);
 }
 .lw-viewer-btn:focus-visible {
-  outline: 2px solid #ff6f61;
+  outline: 2px solid #22d3ee;
   outline-offset: 2px;
 }
 .lw-viewer-btn:disabled {
@@ -2673,10 +2673,10 @@ button:focus-visible > .lw-shot-hint {
 .lw-viewer-close {
   margin-left: 4px;
   border-color: transparent;
-  background: #e5484d;
+  background: #4f5bff;
 }
 .lw-viewer-close:hover:not(:disabled) {
-  background: #f2555a;
+  background: #6470ff;
   border-color: transparent;
 }
 
@@ -2719,7 +2719,7 @@ button:focus-visible > .lw-shot-hint {
   width: 44px;
   height: 44px;
   border-radius: 999px;
-  background: rgb(10 10 12 / 0.75);
+  background: rgb(5 11 31 / 0.75);
 }
 .lw-viewer-prev {
   left: clamp(8px, 2vw, 20px);
@@ -3041,8 +3041,8 @@ button:focus-visible > .lw-shot-hint {
 /* The animated canvas replaces the static 32px dot grid; the colour glows stay. */
 .lw-hero[data-hero-bg]::before {
   background:
-    radial-gradient(60% 55% at 18% 35%, var(--lw-glow-red), transparent 70%),
-    radial-gradient(45% 50% at 80% 60%, var(--lw-glow-coral), transparent 70%);
+    radial-gradient(60% 55% at 18% 35%, var(--lw-glow-primary), transparent 70%),
+    radial-gradient(45% 50% at 80% 60%, var(--lw-glow-accent), transparent 70%);
 }
 .lw-hero-canvas {
   position: absolute;
@@ -3669,7 +3669,7 @@ button:focus-visible > .lw-shot-hint {
 .lw-tiles {
   --tile-fill: oklch(1 0 0 / 2.2%);
   --tile-line: oklch(1 0 0 / 5%);
-  --tile-glow: linear-gradient(135deg, oklch(0.56 0.2 25) 0%, oklch(0.72 0.15 30) 100%);
+  --tile-glow: linear-gradient(135deg, oklch(0.55 0.22 268) 0%, oklch(0.82 0.13 205) 100%);
   --tile-peak: 0.5;
   position: absolute;
   inset: 0;
@@ -3683,7 +3683,7 @@ button:focus-visible > .lw-shot-hint {
 :root.light .lw-tiles {
   --tile-fill: oklch(0 0 0 / 1.6%);
   --tile-line: oklch(0 0 0 / 5.5%);
-  --tile-glow: linear-gradient(135deg, oklch(0.5 0.19 25) 0%, oklch(0.66 0.16 30) 100%);
+  --tile-glow: linear-gradient(135deg, oklch(0.48 0.2 268) 0%, oklch(0.7 0.13 215) 100%);
   --tile-peak: 0.3;
 }
 .lw-tiles-pin {

@@ -72,17 +72,17 @@ export function FlameCursor() {
       <svg className="lw-cursor-svg" width="40" height="40" viewBox="0 0 40 40" focusable="false">
         <defs>
           <linearGradient id="lw-cursor-arrow" x1="2" y1="2" x2="20" y2="20" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stopColor="#8b5cf6" />
-            <stop offset="0.55" stopColor="#d9467a" />
-            <stop offset="1" stopColor="#ff5a4f" />
+            <stop offset="0" stopColor="#6366f1" />
+            <stop offset="0.55" stopColor="#3b82f6" />
+            <stop offset="1" stopColor="#22d3ee" />
           </linearGradient>
           <linearGradient id="lw-cursor-flame-outer" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0" stopColor="#ff5a4f" />
-            <stop offset="1" stopColor="#a855f7" stopOpacity="0.85" />
+            <stop offset="0" stopColor="#22d3ee" />
+            <stop offset="1" stopColor="#6366f1" stopOpacity="0.85" />
           </linearGradient>
           <linearGradient id="lw-cursor-flame-inner" x1="0" y1="1" x2="0" y2="0">
-            <stop offset="0" stopColor="#ffb08a" />
-            <stop offset="1" stopColor="#ff6f61" />
+            <stop offset="0" stopColor="#a5f3fc" />
+            <stop offset="1" stopColor="#67e8f9" />
           </linearGradient>
         </defs>
 

@@ -7,7 +7,7 @@ export type Rgb = [number, number, number];
 
 /** Accent colors matching --highlight in the dark and light themes. */
 export function accentRgb(): Rgb {
-  return document.documentElement.classList.contains("light") ? [163, 38, 42] : [242, 128, 114];
+  return document.documentElement.classList.contains("light") ? [67, 56, 202] : [56, 200, 240];
 }
 
 export function prefersReducedMotion() {

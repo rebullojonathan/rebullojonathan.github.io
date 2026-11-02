@@ -56,7 +56,7 @@ export const booking = {
   calcom: {
     origin: "https://app.cal.com",
     script: "https://app.cal.com/embed/embed.js",
-    brandColor: "#e5484d",
+    brandColor: "#4f5bff",
   },
   /** Shown first when a visitor clicks a generic "Book a Call" button. */
   defaultMeetingId: "discovery-call",

@@ -31,24 +31,25 @@
 
 :root {
   --radius: 1rem;
-  --background: oklch(0.14 0.008 260);
-  --foreground: oklch(0.96 0.01 100);
-  --card: oklch(0.19 0.012 260);
-  --card-foreground: oklch(0.96 0.01 100);
-  --primary: oklch(0.5 0.19 25);
-  --primary-foreground: oklch(0.98 0 0);
-  --highlight: oklch(0.74 0.13 24);
-  --secondary: oklch(0.25 0.015 260);
-  --secondary-foreground: oklch(0.96 0.01 100);
-  --muted: oklch(0.24 0.012 260);
-  --muted-foreground: oklch(0.78 0.012 260);
-  --accent: oklch(0.74 0.13 24);
-  --accent-foreground: oklch(0.16 0.01 260);
+  /* Theme: dark navy surfaces, electric blue/indigo primary, cyan accent, white text. */
+  --background: oklch(0.15 0.045 262);
+  --foreground: oklch(0.985 0.004 250);
+  --card: oklch(0.2 0.05 262);
+  --card-foreground: oklch(0.985 0.004 250);
+  --primary: oklch(0.54 0.22 268);
+  --primary-foreground: oklch(0.99 0 0);
+  --highlight: oklch(0.82 0.13 205);
+  --secondary: oklch(0.25 0.05 262);
+  --secondary-foreground: oklch(0.985 0.004 250);
+  --muted: oklch(0.24 0.045 262);
+  --muted-foreground: oklch(0.8 0.03 255);
+  --accent: oklch(0.82 0.13 205);
+  --accent-foreground: oklch(0.16 0.045 262);
   --destructive: oklch(0.6 0.22 27);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.6 0.16 24);
-  --surface-feature: oklch(0.18 0.015 24);
+  --ring: oklch(0.72 0.15 225);
+  --surface-feature: oklch(0.18 0.05 262);
   --click-flash: oklch(1 0 0 / 20%);
   --shadow-curtain: 0 20px 35px -15px oklch(0 0 0 / 35%);
   --shadow-portrait: 0 18px 45px -16px oklch(0 0 0 / 40%);
@@ -66,22 +67,22 @@
 }
 
 :root.light {
-  --background: oklch(0.98 0.003 24);
-  --foreground: oklch(0.22 0.012 24);
+  --background: oklch(0.98 0.004 250);
+  --foreground: oklch(0.2 0.045 262);
   --card: oklch(1 0 0);
   --card-foreground: var(--foreground);
-  --primary: oklch(0.43 0.16 24);
+  --primary: oklch(0.46 0.21 268);
   --highlight: var(--primary);
-  --secondary: oklch(0.94 0.006 24);
+  --secondary: oklch(0.94 0.012 255);
   --secondary-foreground: var(--foreground);
-  --muted: oklch(0.94 0.006 24);
-  --muted-foreground: oklch(0.46 0.015 24);
-  --accent: oklch(0.43 0.16 24);
+  --muted: oklch(0.94 0.012 255);
+  --muted-foreground: oklch(0.46 0.03 258);
+  --accent: oklch(0.46 0.21 268);
   --accent-foreground: oklch(0.98 0 0);
-  --border: oklch(0.22 0.012 24 / 15%);
-  --input: oklch(0.22 0.012 24 / 20%);
-  --surface-feature: oklch(0.96 0.012 24);
-  --click-flash: oklch(0.43 0.16 24 / 15%);
+  --border: oklch(0.2 0.045 262 / 15%);
+  --input: oklch(0.2 0.045 262 / 20%);
+  --surface-feature: oklch(0.96 0.016 255);
+  --click-flash: oklch(0.46 0.21 268 / 15%);
 }
 
 @layer base {
