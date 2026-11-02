@@ -61,9 +61,11 @@ export function BookCallButton({
   const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
     onBeforeOpen?.();
-    // On phones the embedded booking form can be cut off (especially in in-app browsers
-    // such as Messenger or LinkedIn), so the link opens the full Cal.com page instead.
-    if (window.matchMedia("(max-width: 767px)").matches) return;
+    // The embedded form was cut off below the calendar, hiding the Confirm button, so every
+    // Book a Call link opens the full Cal.com page in a new tab. Set this to true to use the
+    // in-page pop-up again once the embed's height is verified on the live site.
+    const useInPagePopup = false;
+    if (!useInPagePopup) return;
     event.preventDefault();
     open(meeting.id);
   };
