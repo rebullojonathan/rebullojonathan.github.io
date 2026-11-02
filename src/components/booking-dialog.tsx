@@ -60,8 +60,11 @@ export function BookCallButton({
 
   const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
-    event.preventDefault();
     onBeforeOpen?.();
+    // On phones the embedded booking form can be cut off (especially in in-app browsers
+    // such as Messenger or LinkedIn), so the link opens the full Cal.com page instead.
+    if (window.matchMedia("(max-width: 767px)").matches) return;
+    event.preventDefault();
     open(meeting.id);
   };
 
