@@ -10,6 +10,7 @@ import { ContactSection } from "@/components/contact-section";
 import { CurtainFooter } from "@/components/curtain-footer";
 import { BookingProvider } from "@/components/booking-dialog";
 import { FlameCursor } from "@/components/flame-cursor";
+import { TileBackground } from "@/components/tile-background";
 import { useEffect } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 import { enhanceAnchorLinks } from "@/lib/scroll";
@@ -45,12 +46,15 @@ function Index() {
       <main className="page-curtain">
         <SiteHeader />
         <HeroWorkflow />
-        <AboutSection />
-        <WorkSection />
-        <Services />
-        <HowIWork />
-        <Credentials />
-        <ContactSection />
+        <div className="lw-tiles-zone">
+          <TileBackground />
+          <AboutSection />
+          <WorkSection />
+          <Services />
+          <HowIWork />
+          <Credentials />
+          <ContactSection />
+        </div>
       </main>
       <CurtainFooter />
       <FlameCursor />
