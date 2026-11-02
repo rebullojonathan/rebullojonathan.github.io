@@ -1,0 +1,12 @@
+- [x] Add two seamless monochrome tool marquee rows with hover pause and reduced-motion support.
+- [x] Place the uploaded professional photo left of the hero text with responsive styling.
+- [x] Add a curtain-reveal footer with a static reduced-motion fallback.
+- [x] Move the original portrait right and polish mobile spacing without changing the visual style.
+- [x] Provide a PDF download of the uploaded actual resume.
+- [x] Add accessible enlarged screenshot views while preserving all six projects.
+- [x] Verify contact links, CTA destinations, credibility wording and mobile layout.
+- [x] Replace the hero portrait with the newest uploaded photo, re-centred so no white edge shows.
+- [x] Replace Automated Video Creator screenshot (Reels Creator workflow) and add HR Evaluation & Job Posting Assistant project (2026-10-22)
+- [x] Add RAG Knowledge Assistant project with its two workflow screenshots (2026-10-22)
+- [x] Add and verify the work-gallery orbiting tools visual without changing existing projects.
+- [x] Upgrade the existing tools section with grouped technology cards, real logos and an accessible seamless marquee.
