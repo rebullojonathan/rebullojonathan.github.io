@@ -57,6 +57,12 @@ jobs:
           ls -la "$dir"
           echo "dir=$dir" >> "$GITHUB_OUTPUT"
 
+      - name: Browser smoke test
+        run: |
+          mkdir -p /tmp/smoke && cp scripts/smoke-test.mjs /tmp/smoke/
+          cd /tmp/smoke && npm init -y >/dev/null && npm install --silent playwright-core@1.48.2
+          node /tmp/smoke/smoke-test.mjs "$GITHUB_WORKSPACE/${{ steps.site.outputs.dir }}"
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ steps.site.outputs.dir }}
