@@ -3042,8 +3042,10 @@ button:focus-visible > .lw-shot-hint {
   margin: 0;
 }
 @media (max-width: 899px) {
+  /* On tablet and mobile the photo sits above the text, centred. */
   .lw-about-photo {
     width: 200px;
+    margin-inline: auto;
   }
 }
 /* The photo file is already a transparent circle, so only the circle shows in both themes. */
