@@ -1,26 +1,19 @@
-# Work Bloom Show
+# Jonathan Rebullo — AI Automation & GoHighLevel Specialist
 
-Create me portfolio website. Add sections for services, work experience, previous works, testimonial, contact. Make my name as a logo.
+Source code for my portfolio website: **https://rebullojonathan.github.io**
 
-HERE IS MY CONTENT OF MY RESUME :
+I build AI voice agents, GoHighLevel CRM workflows and n8n automations that help
+businesses capture leads, book appointments and follow up automatically. Before
+automation, I spent six years in real estate sales as an accredited Sales Manager
+with SMDC Services Corporation.
 
-This project was built with [Lovable](https://lovable.dev).
+## Built with
 
-## Build with Lovable
+- React 19 and TanStack Start, prerendered to static HTML
+- Tailwind CSS
+- Hosted on GitHub Pages, built and tested with GitHub Actions
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/da572e8d-dde7-47a6-b300-ac1943b2a789).
+## Contact
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+- Email: neo.rebullo@gmail.com
+- LinkedIn: https://linkedin.com/in/jonathan-rebullo-559005375/

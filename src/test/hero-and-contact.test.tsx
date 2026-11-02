@@ -24,9 +24,12 @@ describe("Living Workflow hero", () => {
     expect(screen.getByText(/Available for Projects/)).toBeDefined();
   });
 
-  it("does not place the profile photo in the hero", () => {
+  it("shows only the small intro photo in the hero, linking to About", () => {
     const { container } = render(<HeroWorkflow />);
-    expect(container.querySelector("img")).toBeNull();
+    const images = container.querySelectorAll("img");
+    expect(images).toHaveLength(1);
+    expect(images[0].closest("a")?.getAttribute("href")).toBe("#about");
+    expect(screen.getByText(/Hi, I.m Jonathan Rebullo/)).toBeDefined();
   });
 
   it("reveals example tools when a workflow node is selected", () => {
