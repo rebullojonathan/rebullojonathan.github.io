@@ -3398,10 +3398,10 @@ button:focus-visible > .lw-shot-hint {
 .lw-tools-label {
   margin-top: 32px;
 }
-/* Tools marquee: two rows moving in opposite directions, 70 s per loop. Each track holds
+/* Tools marquee: two rows moving in opposite directions (22 s and 26 s per loop, set per row
+   in tools-marquee.tsx). Each track holds
    several identical copies of its row and moves left by exactly one copy, so the loop is seamless. */
 .lw-marquee {
-  --marquee-duration: 70s;
   --marquee-gap: 10px;
   display: grid;
   gap: 12px;
@@ -3415,7 +3415,7 @@ button:focus-visible > .lw-shot-hint {
 .lw-marquee-track {
   display: flex;
   width: max-content;
-  animation: lw-marquee-scroll var(--marquee-duration) linear infinite;
+  animation: lw-marquee-scroll var(--marquee-duration, 22s) linear infinite;
   will-change: transform;
 }
 .lw-marquee-row[data-reverse] .lw-marquee-track {

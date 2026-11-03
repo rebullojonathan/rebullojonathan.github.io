@@ -22,12 +22,23 @@ function ToolChip({ tool }: { tool: Tool }) {
   );
 }
 
-function MarqueeRow({ tools, reverse }: { tools: Tool[]; reverse?: boolean }) {
+function MarqueeRow({
+  tools,
+  seconds,
+  reverse,
+}: {
+  tools: Tool[];
+  /** Time for the row to move by exactly one copy of its tools. */
+  seconds: number;
+  reverse?: boolean;
+}) {
   return (
     <div className="lw-marquee-row" data-reverse={reverse || undefined}>
       <div
         className="lw-marquee-track"
-        style={{ "--marquee-copies": COPIES } as CSSProperties}
+        style={
+          { "--marquee-copies": COPIES, "--marquee-duration": `${seconds}s` } as CSSProperties
+        }
       >
         {Array.from({ length: COPIES }, (_, copy) => (
           // Only the first copy is read by screen readers; the others exist for the seamless loop.
@@ -42,15 +53,18 @@ function MarqueeRow({ tools, reverse }: { tools: Tool[]; reverse?: boolean }) {
   );
 }
 
+/** Seconds per complete loop for each row. */
+export const ROW_SECONDS = [22, 26] as const;
+
 /**
- * Two rows of tool logos scrolling slowly in opposite directions (70 s per loop).
+ * Two rows of tool logos scrolling in opposite directions (22 s and 26 s per loop).
  * Pauses on hover with a mouse, and stays still for reduced-motion users.
  */
 export function ToolsMarquee() {
   return (
     <div className="lw-marquee" role="region" aria-label={`Tools I work with (${allTools.length})`}>
-      <MarqueeRow tools={toolRows[0]} />
-      <MarqueeRow tools={toolRows[1]} reverse />
+      <MarqueeRow tools={toolRows[0]} seconds={ROW_SECONDS[0]} />
+      <MarqueeRow tools={toolRows[1]} seconds={ROW_SECONDS[1]} reverse />
     </div>
   );
 }
