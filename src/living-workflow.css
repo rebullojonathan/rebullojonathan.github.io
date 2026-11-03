@@ -3398,28 +3398,109 @@ button:focus-visible > .lw-shot-hint {
 .lw-tools-label {
   margin-top: 32px;
 }
-.lw-tools-row {
+/* Tools marquee: two rows moving in opposite directions, 70 s per loop. Each track holds
+   several identical copies of its row and moves left by exactly one copy, so the loop is seamless. */
+.lw-marquee {
+  --marquee-duration: 70s;
+  --marquee-gap: 10px;
+  display: grid;
+  gap: 12px;
+}
+.lw-marquee-row {
+  overflow: hidden;
+  /* Soft fade at both edges. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.lw-marquee-track {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  width: max-content;
+  animation: lw-marquee-scroll var(--marquee-duration) linear infinite;
+  will-change: transform;
+}
+.lw-marquee-row[data-reverse] .lw-marquee-track {
+  animation-direction: reverse;
+}
+@keyframes lw-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-100% / var(--marquee-copies, 3)), 0, 0);
+  }
+}
+.lw-marquee-set {
+  display: flex;
+  flex: none;
+  gap: var(--marquee-gap);
   margin: 0;
-  padding: 0;
+  /* Trailing space equal to the gap keeps the spacing even where two copies meet. */
+  padding: 4px var(--marquee-gap) 4px 0;
   list-style: none;
 }
-.lw-tools-row li {
+.lw-marquee-chip {
   display: inline-flex;
+  flex: none;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  gap: 10px;
+  height: 46px;
+  padding: 0 16px 0 12px;
   border: 1px solid var(--lw-line-strong);
   border-radius: 999px;
+  background: color-mix(in oklch, var(--card) 70%, transparent);
   color: var(--lw-text);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
 }
-.lw-tools-row img {
-  width: 18px;
-  height: 18px;
+.lw-marquee-chip img {
+  flex: none;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
+}
+/* Black single-colour logos turn white on the dark theme. */
+:root:not(.light) .lw-marquee-chip img[data-mono] {
+  filter: invert(1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .lw-marquee-row:hover .lw-marquee-track {
+    animation-play-state: paused;
+  }
+}
+@media (max-width: 640px) {
+  .lw-marquee {
+    --marquee-gap: 8px;
+    gap: 10px;
+  }
+  .lw-marquee-chip {
+    height: 40px;
+    gap: 8px;
+    padding: 0 13px 0 10px;
+    font-size: 0.8125rem;
+  }
+  .lw-marquee-chip img {
+    width: 20px;
+    height: 20px;
+  }
+}
+/* Reduced motion: no scrolling; the first copy of each row wraps and the copies are hidden. */
+@media (prefers-reduced-motion: reduce) {
+  .lw-marquee-row {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .lw-marquee-track {
+    width: auto;
+    animation: none;
+  }
+  .lw-marquee-set {
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    padding-right: 0;
+  }
+  .lw-marquee-set[aria-hidden] {
+    display: none;
+  }
 }
 
 /* ── Case study window ──────────────────────────────────────────────────── */

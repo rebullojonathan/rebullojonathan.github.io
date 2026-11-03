@@ -1,24 +1,6 @@
 import { ProjectScreenshot } from "@/components/project-screenshot";
 import { certificates } from "@/lib/certificates";
-import { techTools } from "@/lib/tech-stack";
-
-/** Tools clients recognize, in the order they matter for this specialization. */
-const toolNames = [
-  "n8n",
-  "GoHighLevel (GHL)",
-  "Vapi",
-  "OpenAI / ChatGPT",
-  "Anthropic Claude",
-  "Google Gemini",
-  "Supabase",
-  "Airtable",
-  "Google Calendar",
-  "Make",
-  "Zapier",
-];
-const tools = toolNames
-  .map((name) => techTools.find((tool) => tool.name === name))
-  .filter((tool): tool is (typeof techTools)[number] => Boolean(tool));
+import { ToolsMarquee } from "@/components/tools-marquee";
 
 export function Credentials() {
   return (
@@ -58,14 +40,7 @@ export function Credentials() {
         </ul>
 
         <p className="lw-label lw-tools-label">Tools I work with</p>
-        <ul className="lw-tools-row" aria-label="Tools I work with">
-          {tools.map((tool) => (
-            <li key={tool.name}>
-              <img src={tool.logo} alt="" width="22" height="22" loading="lazy" />
-              {tool.name}
-            </li>
-          ))}
-        </ul>
+        <ToolsMarquee />
       </div>
     </section>
   );
