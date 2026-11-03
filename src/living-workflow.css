@@ -3351,17 +3351,26 @@ button:focus-visible > .lw-shot-hint {
 }
 
 /* ── Credentials ────────────────────────────────────────────────────────── */
+/* Certificates wrap in rows (2 per row, 3 from 900px) and an incomplete last row is centred. */
 .lw-cred-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  --cred-cols: 2;
+  --cred-gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--cred-gap);
   margin: 36px 0 0;
   padding: 0;
   list-style: none;
 }
-@media (min-width: 1100px) {
+.lw-cred-grid > .lw-cred {
+  flex: 0 0 calc((100% - (var(--cred-cols) - 1) * var(--cred-gap)) / var(--cred-cols));
+  min-width: 0;
+}
+@media (min-width: 900px) {
   .lw-cred-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    --cred-cols: 3;
+    --cred-gap: 16px;
   }
 }
 .lw-cred {

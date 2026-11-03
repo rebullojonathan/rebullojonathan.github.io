@@ -1,6 +1,8 @@
 import certZapierImg from "@/assets/portfolio/cert-zapier.jpg";
 import certZapierFile from "@/assets/portfolio/cert-zapier.pdf";
 import certMakeImg from "@/assets/portfolio/cert-make.png";
+import certPromptImg from "@/assets/portfolio/cert-prompt-engineering.jpg";
+import certPromptFile from "@/assets/portfolio/cert-prompt-engineering.pdf";
 import certN8nImg from "@/assets/portfolio/cert-n8n.jpg";
 import certN8nFile from "@/assets/portfolio/cert-n8n.pdf";
 import certGhlImg from "@/assets/portfolio/cert-highlevel.jpg";
@@ -23,6 +25,14 @@ export const certificates = [
     date: "September 12, 2026",
     img: certMakeImg,
     file: certMakeImg,
+  },
+  {
+    platform: "Prompt Engineering",
+    title: "Prompt Engineering",
+    issuer: "Tara AI Community+",
+    date: "October 3, 2026",
+    img: certPromptImg,
+    file: certPromptFile,
   },
   {
     platform: "n8n",
