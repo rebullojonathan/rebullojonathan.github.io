@@ -1,7 +1,7 @@
 import { site } from "@/lib/site";
 
 const facts = [
-  { value: "6 years", label: "Accredited Sales Manager, SMDC Services Corporation (2020–2026)" },
+  { value: "6 years", label: "Accredited Sales Manager, SM Development Corporation (SMDC), 2020–2026" },
   { value: "GoHighLevel", label: "CRM pipelines, permissions and lead automation" },
   { value: "n8n · Voice AI", label: "AI agents, integrations and appointment booking" },
 ];
@@ -29,9 +29,10 @@ export function AboutSection() {
             {site.name}
           </h2>
           <p className="lw-lead" data-reveal>
-            I spent six years in real estate sales as an accredited Sales Manager with SMDC Services
-            Corporation, from 2020 to 2026. I know what happens to a lead between the first inquiry
-            and the signed reservation, because that was my job.
+            I spent six years in real estate sales as an accredited Sales Manager with SM Development
+            Corporation (SMDC), known as &ldquo;The Good Guys,&rdquo; from 2020 to 2026. I know what
+            happens to a lead between the first inquiry and the signed reservation, because that was
+            my job.
           </p>
           <p className="lw-lead lw-lead-tight" data-reveal>
             Now I build the systems that handle that journey: AI voice agents that book
