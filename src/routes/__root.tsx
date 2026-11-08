@@ -78,11 +78,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NEO REBULLO — AI Automation & GoHighLevel Specialist" },
+      { title: "NEO REBULLO — AI Automation Specialist" },
       {
         name: "description",
         content:
-          "Portfolio of Jonathan Rebullo, AI Automation & GoHighLevel Specialist.",
+          "Portfolio of Jonathan Rebullo, AI Automation Specialist.",
       },
       { name: "author", content: "Jonathan Rebullo" },
       { property: "og:type", content: "website" },

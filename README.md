@@ -1,4 +1,4 @@
-# Jonathan Rebullo — AI Automation & GoHighLevel Specialist
+# Jonathan Rebullo — AI Automation Specialist
 
 Source code for my portfolio website: **https://rebullojonathan.github.io**
 

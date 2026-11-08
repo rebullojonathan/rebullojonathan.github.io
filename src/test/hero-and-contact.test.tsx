@@ -14,7 +14,7 @@ describe("Living Workflow hero", () => {
       </BookingProvider>,
     );
     const heading = screen.getByRole("heading", { level: 1 }).textContent ?? "";
-    expect(heading).toContain("GoHighLevel");
+    expect(heading).toContain("AI Automation Specialist");
     expect(heading).not.toContain("CRM");
     expect(screen.getByRole("link", { name: "Book a Call" }).getAttribute("href")).toBe(
       "https://cal.com/neo-rebullo/discovery-call",

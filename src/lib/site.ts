@@ -7,7 +7,7 @@ import profilePhoto from "@/assets/portfolio/jonathan-rebullo-profile.webp";
 export const site = {
   brand: "NEO REBULLO",
   name: "Jonathan Rebullo",
-  title: "AI Automation & GoHighLevel Specialist",
+  title: "AI Automation Specialist",
   subtitle: "Building AI Voice Agents, CRM Workflows & Automated Appointment Systems",
   location: "Parañaque City, Philippines",
   timezone: "PHT (UTC+8)",

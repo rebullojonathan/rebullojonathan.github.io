@@ -276,13 +276,13 @@ export function HeroWorkflow() {
           </a>
           <h1 id="hero-title" className="lw-hero-title">
             <span className="lw-line">
-              <span style={{ "--i": 0 } as CSSProperties}>AI Automation &amp;</span>
-            </span>
+              <span style={{ "--i": 0 } as CSSProperties}>AI</span>
+            </span>{" "}
             <span className="lw-line">
               <span className="lw-coral" style={{ "--i": 1 } as CSSProperties}>
-                GoHighLevel
+                Automation
               </span>
-            </span>
+            </span>{" "}
             <span className="lw-line">
               <span style={{ "--i": 2 } as CSSProperties}>Specialist</span>
             </span>
