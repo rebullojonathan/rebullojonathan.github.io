@@ -22,7 +22,7 @@ export function ContactSection() {
       <div className="lw-container">
         <div className="lw-contact" data-reveal>
           <p className="lw-eyebrow">
-            <span className="lw-mono-index">06</span> Contact
+            <span className="lw-mono-index">07</span> Contact
           </p>
           <h2 id="contact-title" className="lw-h2">
             Let’s automate your business

@@ -13,6 +13,9 @@ export const site = {
   timezone: "PHT (UTC+8)",
   email: "neo.rebullo@gmail.com",
   linkedin: "https://linkedin.com/in/jonathan-rebullo-559005375/",
+  github: "https://github.com/rebullojonathan",
+  /** Public address of the live site. Used for canonical links and structured data. */
+  url: "https://rebullojonathan.github.io/",
   resumeUrl: resumePdf,
   photoUrl: profilePhoto,
   /** Formspree form that emails each contact-form message to the address above. Free plan: 50 messages a month. */

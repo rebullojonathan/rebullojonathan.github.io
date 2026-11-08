@@ -6,6 +6,7 @@ import { WorkSection } from "@/components/work-section";
 import { Services } from "@/components/services";
 import { HowIWork } from "@/components/how-i-work";
 import { Credentials } from "@/components/credentials";
+import { FaqSection } from "@/components/faq-section";
 import { ContactSection } from "@/components/contact-section";
 import { CurtainFooter } from "@/components/curtain-footer";
 import { BookingProvider } from "@/components/booking-dialog";
@@ -15,9 +16,10 @@ import { useEffect } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 import { enhanceAnchorLinks } from "@/lib/scroll";
 import { site } from "@/lib/site";
+import { homeStructuredData } from "@/lib/structured-data";
 
 const description =
-  "AI Automation & GoHighLevel Specialist building AI voice agents, n8n workflows, CRM pipelines and automated appointment systems.";
+  "Jonathan Rebullo, AI Automation Specialist: AI voice agents, RAG chatbots, n8n workflows and GoHighLevel CRM automation that reduce repetitive work.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,7 +29,13 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: `${site.brand} — ${site.title}` },
       { property: "og:description", content: site.subtitle },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: site.url },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: site.url }],
+    scripts: [
+      // Schema.org data for search engines and AI assistants.
+      { type: "application/ld+json", children: JSON.stringify(homeStructuredData()) },
     ],
   }),
   component: Index,
@@ -53,6 +61,7 @@ function Index() {
           <Services />
           <HowIWork />
           <Credentials />
+          <FaqSection />
           <ContactSection />
         </div>
       </main>

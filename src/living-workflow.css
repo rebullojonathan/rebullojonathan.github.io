@@ -3810,3 +3810,82 @@ button:focus-visible > .lw-shot-hint {
   }
 }
 
+
+/* About: closing goal line. */
+.lw-about-goal strong {
+  color: var(--lw-heading);
+  font-weight: 700;
+}
+
+/* FAQ: native <details> accordion. */
+.lw-faq {
+  display: grid;
+  gap: 12px;
+  max-width: 860px;
+  margin-top: 32px;
+}
+.lw-faq-item {
+  border: 1px solid var(--lw-line-strong);
+  border-radius: 16px;
+  background: color-mix(in oklch, var(--card) 70%, transparent);
+  transition: border-color 0.2s ease;
+}
+.lw-faq-item[open] {
+  border-color: color-mix(in oklch, var(--highlight) 55%, var(--lw-line-strong));
+}
+.lw-faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  padding: 16px 20px;
+  cursor: pointer;
+  list-style: none;
+}
+.lw-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.lw-faq-item summary:focus-visible {
+  outline: 2px solid var(--highlight);
+  outline-offset: 2px;
+  border-radius: 16px;
+}
+.lw-faq-item summary .lw-h4 {
+  margin: 0;
+}
+.lw-faq-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+}
+.lw-faq-icon::before,
+.lw-faq-icon::after {
+  content: "";
+  position: absolute;
+  inset: 6px 0 auto;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--highlight);
+  transition: transform 0.2s ease;
+}
+.lw-faq-icon::after {
+  transform: rotate(90deg);
+}
+.lw-faq-item[open] .lw-faq-icon::after {
+  transform: rotate(0deg);
+}
+.lw-faq-item p {
+  margin: 0;
+  padding: 0 20px 18px;
+  color: var(--lw-text);
+  line-height: 1.65;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lw-faq-item,
+  .lw-faq-icon::before,
+  .lw-faq-icon::after {
+    transition: none;
+  }
+}

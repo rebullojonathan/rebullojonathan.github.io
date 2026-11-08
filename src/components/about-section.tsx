@@ -1,9 +1,9 @@
 import { site } from "@/lib/site";
 
 const facts = [
-  { value: "6 years", label: "Accredited Sales Manager, SM Development Corporation (SMDC), 2020–2026" },
-  { value: "GoHighLevel", label: "CRM pipelines, permissions and lead automation" },
-  { value: "n8n · Voice AI", label: "AI agents, integrations and appointment booking" },
+  { value: "6 years", label: "Sales operations experience, 2020–2026" },
+  { value: "n8n · APIs · Webhooks", label: "Trigger-based workflows that connect business apps" },
+  { value: "AI Agents · RAG", label: "Voice agents, chatbots and knowledge assistants" },
 ];
 
 /** Compact professional introduction, shown right after the hero. */
@@ -29,15 +29,26 @@ export function AboutSection() {
             {site.name}
           </h2>
           <p className="lw-lead" data-reveal>
-            I spent six years in real estate sales as an accredited Sales Manager with SM Development
-            Corporation (SMDC), known as &ldquo;The Good Guys,&rdquo; from 2020 to 2026. I know what
-            happens to a lead between the first inquiry and the signed reservation, because that was
-            my job.
+            Six years in sales gave me a front-row view of how businesses actually run: where
+            handoffs fail, where leads stall, and where hours disappear into repetitive tasks.
           </p>
           <p className="lw-lead lw-lead-tight" data-reveal>
-            Now I build the systems that handle that journey: AI voice agents that book
-            appointments, GoHighLevel pipelines that give every lead an owner, and n8n automations
-            that keep follow-up moving.
+            Today, I&rsquo;m an AI Automation Specialist. I design and build systems that replace
+            manual steps with automated workflows.
+          </p>
+          <p className="lw-lead lw-lead-tight" data-reveal>
+            I build AI agents, RAG chatbots, CRM integrations and multi-step automations using n8n,
+            GoHighLevel, LLMs, APIs and webhooks, connecting the tools a business already uses so
+            information moves on its own.
+          </p>
+          <p className="lw-lead lw-lead-tight" data-reveal>
+            My approach: understand the problem, map the process, build the solution, test it, and
+            document how it works.
+          </p>
+          <p className="lw-lead lw-lead-tight lw-about-goal" data-reveal>
+            <strong>
+              My goal is simple: automate repetitive work so people can focus on what matters most.
+            </strong>
           </p>
 
           <dl className="lw-about-facts" data-reveal>

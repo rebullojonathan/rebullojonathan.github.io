@@ -41,7 +41,21 @@ for (const [label, viewport] of [["desktop", { width: 1440, height: 900 }], ["mo
   page.on("response", (r) => { if (r.url().startsWith("http://localhost") && r.status() >= 400) missing.push(r.url()); });
   await page.goto("http://localhost:4173/", { waitUntil: "networkidle" });
   check("page title", (await page.title()).includes("NEO REBULLO"), await page.title());
-  check("prerendered HTML has the headline", (await (await fetch("http://localhost:4173/")).text()).includes("GoHighLevel"));
+  const html = await (await fetch("http://localhost:4173/")).text();
+  check("prerendered HTML has the headline", html.includes("GoHighLevel"));
+
+  // Search and AI-assistant readiness: data must be in the static HTML, not added later by JavaScript.
+  const ldMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  let ld = null;
+  try { ld = ldMatch ? JSON.parse(ldMatch[1]) : null; } catch { ld = null; }
+  const ldTypes = ld?.["@graph"]?.map((node) => node["@type"]) ?? [];
+  check("structured data (Person, FAQPage) in HTML", ldTypes.includes("Person") && ldTypes.includes("FAQPage"), ldTypes.join(", ") || "missing");
+  check("FAQ answers in prerendered HTML", html.includes("Common questions") && html.includes("Can you build an AI voice agent"));
+  check("canonical link in HTML", /<link[^>]*rel="canonical"[^>]*>/.test(html) && /<link[^>]*rel="canonical"[^>]*href="https:\/\/rebullojonathan\.github\.io\/"|<link[^>]*href="https:\/\/rebullojonathan\.github\.io\/"[^>]*rel="canonical"/.test(html));
+  for (const file of ["/sitemap.xml", "/llms.txt", "/robots.txt"]) {
+    const status = (await fetch(`http://localhost:4173${file}`)).status;
+    check(`file ${file}`, status === 200, String(status));
+  }
 
   // Scroll through the page so lazy images load.
   const height = await page.evaluate(() => document.documentElement.scrollHeight);
