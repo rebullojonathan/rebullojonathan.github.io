@@ -20,6 +20,8 @@ import asana from "@/assets/tech-stack/asana.svg";
 import clickup from "@/assets/tech-stack/clickup.svg";
 import xero from "@/assets/tech-stack/xero.svg";
 import cloud from "@/assets/tech-stack/google-cloud.svg";
+import loom from "@/assets/tech-stack/loom.svg";
+import obs from "@/assets/tech-stack/obs-studio.svg";
 
 /**
  * Applications shown in the "Tools I work with" marquee, in display order.
@@ -58,6 +60,7 @@ export const toolCategories: { name: string; tools: Tool[] }[] = [
       { name: "Google Calendar", logo: calendar },
       { name: "Google Meet", logo: meet },
       { name: "Cal.com", logo: calcom, mono: true },
+      { name: "Loom", logo: loom },
     ],
   },
   {
@@ -65,6 +68,7 @@ export const toolCategories: { name: string; tools: Tool[] }[] = [
     tools: [
       { name: "GitHub", logo: github, mono: true },
       { name: "Lovable", logo: lovable },
+      { name: "OBS Studio", logo: obs, mono: true },
     ],
   },
   {
@@ -80,5 +84,5 @@ export const toolCategories: { name: string; tools: Tool[] }[] = [
 
 export const allTools = toolCategories.flatMap((category) => category.tools);
 
-/** Two marquee rows of 11: the first half of the list and the second half. */
-export const toolRows: [Tool[], Tool[]] = [allTools.slice(0, 11), allTools.slice(11)];
+/** Two marquee rows of 12: the first half of the list and the second half. */
+export const toolRows: [Tool[], Tool[]] = [allTools.slice(0, 12), allTools.slice(12)];

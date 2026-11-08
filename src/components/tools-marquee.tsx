@@ -54,10 +54,10 @@ function MarqueeRow({
 }
 
 /** Seconds per complete loop for each row. */
-export const ROW_SECONDS = [22, 26] as const;
+export const ROW_SECONDS = [24, 28] as const;
 
 /**
- * Two rows of tool logos scrolling in opposite directions (22 s and 26 s per loop).
+ * Two rows of tool logos scrolling in opposite directions (24 s and 28 s per loop; 12 logos per row, so the speed per logo stays about the same as before).
  * Pauses on hover with a mouse, and stays still for reduced-motion users.
  */
 export function ToolsMarquee() {
