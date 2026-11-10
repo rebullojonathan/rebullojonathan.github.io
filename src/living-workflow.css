@@ -3924,3 +3924,100 @@ button:focus-visible > .lw-shot-hint {
 .lw-case-outcomes .lw-checklist {
   margin: 10px 0 0;
 }
+
+/* Contact: intro on the left, calendar booking card on the right (stacked on small screens). */
+.lw-contact-top {
+  display: grid;
+  gap: 36px;
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .lw-contact-top {
+    grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+    gap: 48px;
+  }
+}
+.lw-calendar-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid color-mix(in oklch, var(--highlight) 45%, var(--lw-line-strong));
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 80% at 100% 0%, color-mix(in oklch, var(--highlight) 16%, transparent), transparent 60%),
+    color-mix(in oklch, var(--card) 80%, transparent);
+  box-shadow: 0 18px 50px -24px color-mix(in oklch, var(--highlight) 45%, transparent);
+}
+.lw-calendar-art {
+  width: 132px;
+  padding: 10px;
+  border: 1px solid var(--lw-line-strong);
+  border-radius: 14px;
+  background: color-mix(in oklch, var(--card) 90%, transparent);
+}
+.lw-calendar-art-head {
+  display: flex;
+  justify-content: space-around;
+  height: 10px;
+  margin: -16px 0 10px;
+}
+.lw-calendar-art-head span {
+  width: 6px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--highlight);
+}
+.lw-calendar-art-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.lw-calendar-art-grid span {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: color-mix(in oklch, var(--lw-text-2) 22%, transparent);
+}
+.lw-calendar-art-grid span.is-picked {
+  background: var(--highlight);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--highlight) 30%, transparent);
+}
+.lw-calendar-card-title {
+  margin: 6px 0 0;
+  color: var(--lw-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.lw-calendar-card-text {
+  margin: 0;
+  color: var(--lw-text-2);
+  line-height: 1.55;
+}
+.lw-calendar-card-facts {
+  display: grid;
+  gap: 6px;
+  margin: 2px 0 6px;
+  padding: 0;
+  list-style: none;
+  color: var(--lw-text);
+  font-size: 0.95rem;
+}
+.lw-calendar-card-facts li::before {
+  content: "✓";
+  margin-right: 8px;
+  color: var(--highlight);
+  font-weight: 700;
+}
+.lw-calendar-card-btn {
+  justify-content: center;
+  width: 100%;
+}
+.lw-calendar-card-note {
+  margin: 0;
+  color: var(--lw-text-2);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-align: center;
+}

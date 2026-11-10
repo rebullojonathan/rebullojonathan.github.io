@@ -60,4 +60,16 @@ describe("Contact section", () => {
       ).toBe(`https://cal.com/neo-rebullo/${id}`);
     }
   });
+
+  it("shows a calendar card that opens the discovery call booking page", () => {
+    render(
+      <BookingProvider>
+        <ContactSection />
+      </BookingProvider>,
+    );
+    expect(screen.getByRole("heading", { name: "Book a call on my calendar" })).toBeDefined();
+    expect(screen.getByRole("link", { name: /Open my calendar/ }).getAttribute("href")).toBe(
+      "https://cal.com/neo-rebullo/discovery-call",
+    );
+  });
 });
