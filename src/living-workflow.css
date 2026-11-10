@@ -4021,3 +4021,134 @@ button:focus-visible > .lw-shot-hint {
   font-size: 12px;
   text-align: center;
 }
+
+/* Meeting cards: gentle, staggered motion so the three booking options get noticed.
+   Movement pauses on hover/focus and is turned off for reduced-motion users. */
+.lw-booking-option {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in oklch, var(--card) 70%, transparent);
+  animation: lw-meeting-float 3.6s ease-in-out infinite;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+.lw-booking-list li:nth-child(2) .lw-booking-option {
+  animation-delay: -1.2s;
+}
+.lw-booking-list li:nth-child(3) .lw-booking-option {
+  animation-delay: -2.4s;
+}
+/* A soft light sweep crosses each card in turn. */
+.lw-booking-option::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    color-mix(in oklch, var(--highlight) 18%, transparent) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: lw-meeting-shine 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.lw-booking-list li:nth-child(2) .lw-booking-option::after {
+  animation-delay: 2s;
+}
+.lw-booking-list li:nth-child(3) .lw-booking-option::after {
+  animation-delay: 4s;
+}
+.lw-booking-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-bottom: 4px;
+  border-radius: 11px;
+  background: color-mix(in oklch, var(--highlight) 14%, transparent);
+  color: var(--highlight);
+  animation: lw-meeting-wiggle 3.6s ease-in-out infinite;
+}
+.lw-booking-list li:nth-child(2) .lw-booking-icon {
+  animation-delay: -1.2s;
+}
+.lw-booking-list li:nth-child(3) .lw-booking-icon {
+  animation-delay: -2.4s;
+}
+.lw-booking-arrow {
+  display: inline-block;
+  animation: lw-meeting-nudge 1.6s ease-in-out infinite;
+}
+.lw-booking-option:hover,
+.lw-booking-option:focus-visible {
+  animation-play-state: paused;
+  border-color: var(--highlight);
+  box-shadow: 0 14px 34px -18px color-mix(in oklch, var(--highlight) 70%, transparent);
+}
+.lw-booking-option:hover .lw-booking-icon,
+.lw-booking-option:focus-visible .lw-booking-icon {
+  animation: lw-meeting-pop 0.5s ease;
+}
+@keyframes lw-meeting-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes lw-meeting-shine {
+  0%,
+  65% {
+    transform: translateX(-120%);
+  }
+  85%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+@keyframes lw-meeting-wiggle {
+  0%,
+  70%,
+  100% {
+    transform: rotate(0deg);
+  }
+  76% {
+    transform: rotate(-10deg);
+  }
+  82% {
+    transform: rotate(8deg);
+  }
+  88% {
+    transform: rotate(-4deg);
+  }
+}
+@keyframes lw-meeting-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+@keyframes lw-meeting-pop {
+  50% {
+    transform: scale(1.15);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lw-booking-option,
+  .lw-booking-option::after,
+  .lw-booking-icon,
+  .lw-booking-arrow {
+    animation: none;
+  }
+  .lw-booking-option::after {
+    display: none;
+  }
+}

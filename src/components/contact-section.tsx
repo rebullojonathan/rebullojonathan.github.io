@@ -72,12 +72,13 @@ export function ContactSection() {
                 {booking.meetings.map((meeting) => (
                   <li key={meeting.id}>
                     <BookCallButton meetingId={meeting.id} className="lw-booking-option">
+                      <MeetingIcon id={meeting.id} />
                       <span className="lw-booking-option-title">{meeting.title}</span>
                       <span className="lw-booking-option-meta">
                         {meeting.minutes} min · {meeting.audience}
                       </span>
                       <span className="lw-booking-option-cta" aria-hidden="true">
-                        Book →
+                        Book <span className="lw-booking-arrow">→</span>
                       </span>
                     </BookCallButton>
                   </li>
@@ -128,5 +129,24 @@ function CalendarCard() {
       </BookCallButton>
       <p className="lw-calendar-card-note">Recruiter or specific project? More meeting types below.</p>
     </aside>
+  );
+}
+
+/** Small animated icon for each meeting type. Decorative only. */
+function MeetingIcon({ id }: { id: string }) {
+  const paths: Record<string, string> = {
+    // Chat bubble: an open conversation about the business.
+    "discovery-call": "M4 5h16v10H9l-5 4V5z",
+    // Person: a recruiter or company interview.
+    "client-interview": "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm-7 8a7 7 0 0 1 14 0",
+    // Light bulb: a specific project idea.
+    "project-consultation": "M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3z",
+  };
+  return (
+    <span className="lw-booking-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d={paths[id] ?? paths["discovery-call"]} />
+      </svg>
+    </span>
   );
 }
