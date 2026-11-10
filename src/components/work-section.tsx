@@ -57,6 +57,7 @@ export function WorkSection() {
             <p className="lw-work-category">{featured.category}</p>
             <h3 className="lw-h3">{featured.title}</h3>
             <p className="lw-work-summary">{featured.summary}</p>
+            <WorkOutcome text={featured.outcome} />
             <ul className="lw-checklist">
               {featured.built.slice(0, 3).map((item) => (
                 <li key={item}>{item}</li>
@@ -93,6 +94,7 @@ export function WorkSection() {
                 <p className="lw-work-category">{item.category}</p>
                 <h3 className="lw-h3">{item.title}</h3>
                 <p className="lw-work-summary">{item.summary}</p>
+                <WorkOutcome text={item.outcome} />
                 <ul className="lw-checklist">
                   {item.built.slice(0, 3).map((point) => (
                     <li key={point}>{point}</li>
@@ -128,6 +130,17 @@ export function WorkSection() {
 
       {open ? <CaseStudyDialog item={open} onClose={() => setOpenSlug(null)} /> : null}
     </section>
+  );
+}
+
+/** One-line result on a homepage card. Numbers come from Jonathan's own tests. */
+function WorkOutcome({ text }: { text?: string }) {
+  if (!text) return null;
+  return (
+    <p className="lw-work-outcome">
+      <span className="lw-work-outcome-label">Outcome</span>
+      {text}
+    </p>
   );
 }
 
@@ -226,6 +239,20 @@ function CaseStudyDialog({ item, onClose }: { item: WorkItem; onClose: () => voi
             <p className="lw-case-doc-summary">{item.summary}</p>
             <ToolList tools={item.tools} />
           </header>
+
+          {item.outcomes && item.outcomes.length > 0 ? (
+            // Results come first, so a visitor sees what changed before how it was built.
+            <section className="lw-case-outcomes" aria-labelledby="case-outcomes-title">
+              <h3 id="case-outcomes-title" className="lw-label">
+                Outcome
+              </h3>
+              <ul className="lw-checklist">
+                {item.outcomes.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
 
           {item.images.length > 0 && item.imageCaptions ? (
             // Captioned screenshots read as numbered steps, in the order the system runs.

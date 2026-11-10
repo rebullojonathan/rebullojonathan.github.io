@@ -3889,3 +3889,38 @@ button:focus-visible > .lw-shot-hint {
     transition: none;
   }
 }
+
+/* Project outcome: a highlighted result line on cards and a result block in case studies. */
+.lw-work-outcome {
+  margin: 4px 0 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--highlight);
+  border-radius: 0 10px 10px 0;
+  background: color-mix(in oklch, var(--highlight) 9%, transparent);
+  color: var(--lw-heading);
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+.lw-work-outcome-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--highlight);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.lw-case-outcomes {
+  margin: 28px 0 8px;
+  padding: 18px 20px;
+  border: 1px solid color-mix(in oklch, var(--highlight) 45%, var(--lw-line-strong));
+  border-radius: 16px;
+  background: color-mix(in oklch, var(--highlight) 7%, transparent);
+}
+.lw-case-outcomes .lw-label {
+  margin-top: 0;
+  color: var(--highlight);
+}
+.lw-case-outcomes .lw-checklist {
+  margin: 10px 0 0;
+}

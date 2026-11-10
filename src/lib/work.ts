@@ -41,6 +41,8 @@ import ghlOpportunityCreated from "@/assets/portfolio/ghl-opportunity-created.pn
  * - `verification` says, in plain professional language, how and where it was
  *   tested. It is shown inside the case study, not as a label on the homepage.
  * - No client results, metrics, testimonials or production claims.
+ * - `outcome` and `outcomes` use only numbers Jonathan measured in his own tests
+ *   (or counts visible in the screenshots), and say so where it matters.
  */
 export type WorkItem = {
   slug: string;
@@ -49,6 +51,10 @@ export type WorkItem = {
   category: string;
   /** One sentence on what the system does for the business. */
   summary: string;
+  /** One line on the result, shown on the homepage card. Measured in testing only. */
+  outcome?: string;
+  /** Result bullets shown at the top of the case study. Measured in testing only. */
+  outcomes?: string[];
   /** The business problem it solves. */
   problem: string;
   /** Implemented features only. */
@@ -82,6 +88,14 @@ export const work: WorkItem[] = [
     category: "Voice AI · Appointment booking",
     summary:
       "A voice assistant that checks live calendar availability and books, reschedules or cancels appointments during the conversation.",
+    outcome:
+      "Callers book, reschedule or cancel in one call. The calendar updates within 3–5 seconds of their confirmation, with no staff involved.",
+    outcomes: [
+      "Google Calendar updates within 3–5 seconds of the caller's confirmation",
+      "Replaces 5 manual front-desk steps: checking the calendar, offering times, creating the event, logging it and confirming with the caller",
+      "Every call logged to Airtable automatically, with zero manual data entry",
+      "Rebuilt from scratch on a fresh n8n and Vapi setup and tested across about 10 calls; the final build handles booking, rescheduling and cancellation",
+    ],
     problem:
       "Phone-based scheduling ties up staff time, and callers are lost to hold times, voicemail and missed calls, especially outside business hours.",
     built: [
@@ -147,6 +161,14 @@ export const work: WorkItem[] = [
     category: "GoHighLevel CRM · Real estate sales",
     summary:
       "A real estate sales pipeline where every deal has an owner, and each agent sees only their own leads.",
+    outcome:
+      "Every deal has one owner and a clear stage across a 6-stage pipeline, and each agent sees only their own leads (2 of 6 in testing).",
+    outcomes: [
+      "6-stage pipeline from New Lead to Site Viewing, so no lead sits without a next step",
+      "One owner per deal, so the team lead knows who is responsible for each lead",
+      "A restricted agent saw only 2 of 6 contacts, so each agent's clients stay protected",
+      "Built three times until the setup was repeatable from scratch",
+    ],
     problem:
       "Real estate teams lose track of leads when contacts, deals and agent responsibilities live in different places, and agents can see each other's clients.",
     built: [
@@ -194,6 +216,13 @@ export const work: WorkItem[] = [
     category: "GoHighLevel CRM · Lead automation",
     summary:
       "Property inquiries from a GoHighLevel form become contacts and pipeline opportunities automatically, with no manual data entry.",
+    outcome:
+      "A new inquiry becomes a CRM contact and a pipeline deal within 3–5 seconds, with no manual data entry.",
+    outcomes: [
+      "Contact and opportunity created within 3–5 seconds of the form submission",
+      "Zero manual data entry: name, details and lead source are recorded automatically",
+      "Every inquiry lands in New Lead, ready for follow-up",
+    ],
     problem:
       "Inquiries from ads and landing pages wait in inboxes and spreadsheets, and slow follow-up loses the lead.",
     built: [
@@ -233,6 +262,13 @@ export const work: WorkItem[] = [
     category: "AI agent · Knowledge base",
     summary:
       "A chat assistant that answers from a team's own documents and stays in sync with Google Drive.",
+    outcome:
+      "Answers questions from the team's own documents in about 3 seconds, and stays current as files change in Google Drive.",
+    outcomes: [
+      "Answers in about 3 seconds in testing, grounded in the team's own documents",
+      "New, edited and deleted files in Google Drive are picked up automatically on the next sync, with no manual re-upload",
+      "Answers come from retrieved passages, not general AI guesses",
+    ],
     problem:
       "Answers get buried in shared folders, and a general AI chatbot without access to those documents will guess.",
     built: [
@@ -262,6 +298,14 @@ export const work: WorkItem[] = [
     category: "AI chatbot · Customer inquiries",
     summary:
       "A Messenger assistant that answers customer questions from the business's own information.",
+    outcome:
+      "Replies to customer messages in 1–2 seconds, compared with up to 10 minutes when we replied by hand on busy days.",
+    outcomes: [
+      "Replies in 1–2 seconds in end-to-end testing",
+      "Removes the up to 10-minute wait customers faced on busy days, at any hour",
+      "Answers come from the business's own information in Google Docs, so editing the doc updates the answers without touching the workflow",
+      "Tested with test conversations before launch; currently paused",
+    ],
     problem:
       "Small businesses miss sales when customer messages wait hours for a reply.",
     built: [
@@ -287,6 +331,13 @@ export const work: WorkItem[] = [
     category: "AI recruitment workflow",
     summary:
       "A hiring workflow that takes in applications, evaluates CVs with AI and schedules interviews.",
+    outcome:
+      "Evaluates each CV against the job requirements in about 3 seconds and routes the candidate automatically.",
+    outcomes: [
+      "About 3 seconds per CV evaluation, tested with 5 applicants",
+      "Every applicant scored against the same job requirements, so screening stays consistent",
+      "Qualified candidates move to questionnaires and interview scheduling without manual sorting",
+    ],
     problem:
       "Screening applicants by hand is slow and inconsistent, and good candidates wait days for a reply.",
     built: [
@@ -353,6 +404,12 @@ export const work: WorkItem[] = [
     category: "No-code business automations",
     summary:
       "Five business automations covering lead engagement, lead enrichment, content, accounting sync and document handling.",
+    outcome:
+      "Five workflows that each take a recurring manual task off a team's plate, from lead follow-up to accounting sync.",
+    outcomes: [
+      "5 working automations across Zapier (3) and Make.com (2)",
+      "Each replaces a recurring manual task: routing lead follow-ups, enriching leads, repurposing content, syncing Asana with Xero and filing email attachments",
+    ],
     problem: "Many teams already run on Zapier or Make and need automations built on those platforms.",
     built: [
       "3 Zapier automations",
