@@ -18,6 +18,13 @@ import voiceUpdateVideo from "@/assets/videos/updateslots.mp4";
 import voiceUpdatePoster from "@/assets/videos/updateslots-poster.jpg";
 import voiceCancelVideo from "@/assets/videos/cancelslots.mp4";
 import voiceCancelPoster from "@/assets/videos/cancelslots-poster.jpg";
+import leadAgentDemoVideo from "@/assets/videos/messenger_lead_agent_demo.mp4";
+import leadAgentDemoPoster from "@/assets/videos/messenger_lead_agent_demo-poster.jpg";
+import leadAgentWalkthroughVideo from "@/assets/videos/messenger_lead_agent_walkthrough.mp4";
+import leadAgentWalkthroughPoster from "@/assets/videos/messenger_lead_agent_walkthrough-poster.jpg";
+import leadAgentWorkflow from "@/assets/portfolio/messenger-lead-agent-workflow.png";
+import leadAgentSaveToGhl from "@/assets/portfolio/messenger-lead-agent-save-to-ghl.png";
+import leadAgentGhlPipeline from "@/assets/portfolio/messenger-lead-agent-ghl-pipeline.png";
 import ragAssistantShot from "@/assets/portfolio/rag-knowledge-assistant.png";
 import ragAssistantTriggers from "@/assets/portfolio/rag-knowledge-assistant-triggers.png";
 import messengerChatbotShot from "@/assets/portfolio/messenger-ai-chatbot.png";
@@ -77,6 +84,8 @@ export type WorkItem = {
   cover?: string;
   /** Optional screen recordings of real test runs, shown in the case study. */
   videos?: { title: string; desc: string; src: string; poster: string }[];
+  /** Privacy or context note shown under the videos. */
+  videoNote?: string;
   /** Extra workflows shown inside one case study (used for the Zapier & Make builds). */
   builds?: { title: string; desc: string; tools: string[]; images: string[] }[];
 };
@@ -154,6 +163,72 @@ export const work: WorkItem[] = [
         poster: voiceCancelPoster,
       },
     ],
+    videoNote:
+      "Recorded test calls in a demo setup with a fictional clinic. The caller's phone number and date of birth are blurred and muted for privacy.",
+  },
+  {
+    slug: "messenger-ai-lead-agent",
+    title: "Messenger AI Lead Agent → GoHighLevel",
+    category: "AI agent · Lead capture · CRM",
+    summary:
+      "A Messenger AI agent that answers property questions, collects a buyer's details, confirms them, and saves the lead to GoHighLevel with a note and a follow-up task.",
+    outcome:
+      "One Messenger conversation becomes a confirmed CRM lead: contact, pipeline deal, note and follow-up task, with no manual data entry.",
+    outcomes: [
+      "Collects 8 lead details in a single conversation: name, contact, unit type, budget, timeline, and the preferred presentation date, time and number of guests",
+      "Nothing is saved until the customer confirms the summary, so the CRM only gets checked details",
+      "Creates or updates the contact, the pipeline opportunity and a lead note automatically, and adds a follow-up task for every new lead",
+      "Tested end to end on a demo Facebook Page; the test leads appear in the GoHighLevel pipeline",
+    ],
+    problem:
+      "Property inquiries on Messenger arrive at all hours. Agents reply late, details get lost in chat threads, and leads never make it into the CRM.",
+    built: [
+      "Messenger webhook in n8n, with Meta's verification handshake",
+      "AI agent (Google Gemini) that answers from the project's information in Google Docs, with conversation memory",
+      "Lead capture tool the agent calls only after the customer confirms their details",
+      "Sub-workflow that validates the lead, then upserts the contact, creates or updates the opportunity and adds a note through the GoHighLevel API",
+      "Follow-up task created automatically for new leads",
+      "Clear success, not-confirmed and error responses back to the agent",
+    ],
+    flow: [
+      "A buyer messages the Facebook Page",
+      "n8n receives the message, reads the project information and passes it to the AI agent",
+      "The agent answers questions, then collects the buyer's details and reads them back for confirmation",
+      "After a yes, the Save Lead tool sends the details to the GoHighLevel sub-workflow",
+      "GoHighLevel gets the contact, the opportunity, a note with the request and a follow-up task, and the agent confirms to the buyer",
+    ],
+    verification:
+      "Built and tested end to end on a demo Facebook Page that is labelled as an unofficial demo for portfolio and testing. In the recorded test, the conversation produced a contact, an opportunity and a detailed note in GoHighLevel. The test phone number and email are blurred in the recording.",
+    design:
+      "Designed from the sales side: the agent never promises a schedule it can't confirm. Presentation requests are saved as pending, so a human agent confirms the time, and every note says the details were collected by AI.",
+    applications: [
+      "Real estate developers and brokers taking inquiries on Facebook",
+      "Any business that sells through Messenger and tracks leads in a CRM",
+    ],
+    tools: ["n8n", "Google Gemini", "Google Docs", "Meta Graph API", "GoHighLevel API", "Webhooks"],
+    images: [leadAgentWorkflow, leadAgentSaveToGhl, leadAgentGhlPipeline],
+    imageCaptions: [
+      "Main workflow: Messenger webhook, AI agent with memory and a Save Lead tool",
+      "Save Lead sub-workflow: confirm, validate, then contact, opportunity, note and follow-up task in GoHighLevel",
+      "The leads in the GoHighLevel pipeline, from New Inquiry to Presentation Requested",
+    ],
+    cover: leadAgentWorkflow,
+    videos: [
+      {
+        title: "1. Live test: Messenger to GoHighLevel",
+        desc: "A full conversation, the confirmation, and the new lead in GoHighLevel. 6:24",
+        src: leadAgentDemoVideo,
+        poster: leadAgentDemoPoster,
+      },
+      {
+        title: "2. Workflow walkthrough",
+        desc: "How the AI agent and the GoHighLevel sub-workflow fit together. 4:07",
+        src: leadAgentWalkthroughVideo,
+        poster: leadAgentWalkthroughPoster,
+      },
+    ],
+    videoNote:
+      "Recorded on a demo Facebook Page labelled as an unofficial demo. The test phone number and email are blurred.",
   },
   {
     slug: "ghl-pipeline-management",
@@ -457,9 +532,9 @@ export const work: WorkItem[] = [
 /** Shown on the homepage, in this order. The first is the featured project. */
 export const selectedWorkSlugs = [
   "ai-voice-appointment-setter",
+  "messenger-ai-lead-agent",
   "ghl-pipeline-management",
   "ghl-lead-automation",
-  "rag-knowledge-assistant",
 ] as const;
 
 export function findWork(slug: string) {

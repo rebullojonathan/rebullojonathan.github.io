@@ -11,6 +11,7 @@
 ## Projects
 
 - [AI Voice Appointment Setter](https://rebullojonathan.github.io/#work): Vapi voice assistant with n8n workflows that check Google Calendar availability and book, reschedule or cancel appointments during the call; bookings logged to Airtable. Recorded test runs on the site.
+- [Messenger AI Lead Agent → GoHighLevel](https://rebullojonathan.github.io/#work): Facebook Messenger AI agent (n8n + Google Gemini) that answers property questions, collects and confirms a buyer's details, then saves the contact, opportunity, note and a follow-up task to GoHighLevel. Tested end to end on a demo Facebook Page.
 - [GoHighLevel CRM Pipeline Management](https://rebullojonathan.github.io/#work): real estate sales pipeline where every deal has an owner and each agent sees only their own leads.
 - [GoHighLevel CRM Lead Automation](https://rebullojonathan.github.io/#work): property inquiries from a GoHighLevel form become contacts and pipeline opportunities automatically.
 - [RAG Knowledge Assistant](https://rebullojonathan.github.io/#work): chat assistant that answers from a team's own documents, synced from Google Drive, with a Supabase vector store.

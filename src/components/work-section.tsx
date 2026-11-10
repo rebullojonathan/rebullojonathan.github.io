@@ -313,10 +313,7 @@ function CaseStudyDialog({ item, onClose }: { item: WorkItem; onClose: () => voi
                   </li>
                 ))}
               </ul>
-              <p className="lw-case-video-note">
-                Recorded test calls in a demo setup with a fictional clinic. The caller&rsquo;s phone
-                number and date of birth are blurred and muted for privacy.
-              </p>
+              {item.videoNote ? <p className="lw-case-video-note">{item.videoNote}</p> : null}
             </section>
           ) : null}
 
