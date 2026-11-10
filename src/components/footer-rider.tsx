@@ -12,6 +12,13 @@ import type { CSSProperties } from "react";
  */
 type Phase = "static" | "scattered" | "assembled";
 
+/** Assembly timing (seconds): slow enough for visitors to watch the figure come together. */
+const PIECE_STAGGER = 0.35;
+const PIECE_FLIGHT = 1.8;
+const PIECE_COUNT = 10;
+/** Riding starts once the last piece has landed. */
+const ASSEMBLY_MS = ((PIECE_COUNT - 1) * PIECE_STAGGER + PIECE_FLIGHT) * 1000 + 200;
+
 /** Where each piece starts before it flies into place (offset in SVG units, rotation in degrees). */
 const scatter: Record<string, [number, number, number]> = {
   wheelRear: [-70, -60, -140],
@@ -32,7 +39,7 @@ function piece(name: string, order: number): CSSProperties {
     "--sx": `${x}px`,
     "--sy": `${y}px`,
     "--sr": `${r}deg`,
-    "--delay": `${order * 0.12}s`,
+    "--delay": `${order * PIECE_STAGGER}s`,
   } as CSSProperties;
 }
 
@@ -74,6 +81,7 @@ export function FooterRider() {
   // "static" until JavaScript runs, so the finished drawing shows without JS.
   const [phase, setPhase] = useState<Phase>("static");
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [built, setBuilt] = useState(false);
   const onScreen = useFooterOnScreen(ref);
 
   useEffect(() => {
@@ -90,7 +98,14 @@ export function FooterRider() {
     }
   }, [phase, onScreen]);
 
-  const riding = phase === "assembled" && onScreen && !reducedMotion;
+  // Wait for every piece to land before the bike starts rolling.
+  useEffect(() => {
+    if (phase !== "assembled") return;
+    const id = window.setTimeout(() => setBuilt(true), ASSEMBLY_MS);
+    return () => window.clearTimeout(id);
+  }, [phase]);
+
+  const riding = built && onScreen && !reducedMotion;
 
   return (
     <div
@@ -98,6 +113,7 @@ export function FooterRider() {
       className="lw-rider"
       data-phase={phase}
       data-riding={riding ? "true" : "false"}
+      style={{ "--flight": `${PIECE_FLIGHT}s` } as CSSProperties}
       aria-hidden="true"
     >
       <svg viewBox="0 0 260 150" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round">
