@@ -4156,7 +4156,6 @@ button:focus-visible > .lw-shot-hint {
 /* Footer rider: sticks assemble into a stick figure on a square-wheeled bike, then he rides.
    Animations run only while the footer is on screen (data-riding="true"). */
 .lw-rider {
-  width: min(260px, 72vw);
   color: #fff;
 }
 .lw-rider svg {
@@ -4273,5 +4272,95 @@ button:focus-visible > .lw-shot-hint {
   }
   .lw-footer-button {
     grid-row: 3;
+  }
+}
+
+/* Footer sky: sun, two clouds and the moon change every 10 s while the rider rides. */
+.lw-rider {
+  width: min(300px, 76vw);
+}
+.lw-sun,
+.lw-moon,
+.lw-cloud {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 1.6s ease,
+    transform 2.4s ease;
+}
+.lw-sun {
+  transform: translateY(14px) scale(0.6);
+}
+.lw-moon {
+  transform: translateY(16px) rotate(-20deg);
+}
+.lw-cloud-a {
+  transform: translateX(-40px);
+}
+.lw-cloud-b {
+  transform: translateX(40px);
+}
+.lw-rider[data-sky="sun"] .lw-sun,
+.lw-rider[data-sky="clouds"] .lw-sun {
+  opacity: 1;
+  transform: none;
+}
+/* The sun sinks behind the clouds (they are drawn on top) while the moon rises. */
+.lw-rider[data-sky="moon"] .lw-sun {
+  opacity: 0;
+  transform: translate(-8px, 12px);
+  transition:
+    opacity 2.4s ease 0.4s,
+    transform 2.4s ease;
+}
+.lw-rider[data-sky="clouds"] .lw-cloud,
+.lw-rider[data-sky="moon"] .lw-cloud {
+  opacity: 0.95;
+  transform: none;
+}
+.lw-rider[data-sky="moon"] .lw-moon {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 1.6s ease 1.2s,
+    transform 2.4s ease 1.2s;
+}
+.lw-sun-rays {
+  transform-box: view-box;
+  transform-origin: 250px -30px;
+  animation: lw-sun-spin 12s linear infinite;
+}
+.lw-rider[data-sky="clouds"] .lw-cloud-a path,
+.lw-rider[data-sky="moon"] .lw-cloud-a path {
+  animation: lw-cloud-drift 6s ease-in-out infinite alternate;
+}
+.lw-rider[data-sky="clouds"] .lw-cloud-b path,
+.lw-rider[data-sky="moon"] .lw-cloud-b path {
+  animation: lw-cloud-drift 7s ease-in-out infinite alternate-reverse;
+}
+.lw-rider[data-riding="false"] .lw-sun-rays,
+.lw-rider[data-riding="false"] .lw-cloud path {
+  animation-play-state: paused;
+}
+@keyframes lw-sun-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes lw-cloud-drift {
+  to {
+    transform: translateX(6px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lw-sun,
+  .lw-moon,
+  .lw-cloud {
+    transition: none;
+  }
+  .lw-sun-rays,
+  .lw-cloud path {
+    animation: none;
   }
 }

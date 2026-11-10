@@ -16,6 +16,14 @@ type Phase = "static" | "scattered" | "assembled";
 const PIECE_STAGGER = 0.35;
 const PIECE_FLIGHT = 1.8;
 const PIECE_COUNT = 10;
+/**
+ * Sky cycle while riding, one step every 10 seconds:
+ * sun → clouds roll in → sun hides behind the clouds and the moon rises → sun again.
+ */
+const SKY_STEPS = ["sun", "clouds", "moon"] as const;
+type Sky = "none" | (typeof SKY_STEPS)[number];
+const SKY_STEP_MS = 10_000;
+
 /** Riding starts once the last piece has landed. */
 const ASSEMBLY_MS = ((PIECE_COUNT - 1) * PIECE_STAGGER + PIECE_FLIGHT) * 1000 + 200;
 
@@ -107,16 +115,63 @@ export function FooterRider() {
 
   const riding = built && onScreen && !reducedMotion;
 
+  // The sky only moves while he rides; scrolling away pauses it on the current step.
+  const [skyStep, setSkyStep] = useState(-1);
+  useEffect(() => {
+    if (!riding) return;
+    setSkyStep((step) => (step < 0 ? 0 : step));
+    const id = window.setInterval(
+      () => setSkyStep((step) => (step + 1) % SKY_STEPS.length),
+      SKY_STEP_MS,
+    );
+    return () => window.clearInterval(id);
+  }, [riding]);
+  const sky: Sky = reducedMotion ? "sun" : skyStep < 0 ? "none" : SKY_STEPS[skyStep];
+
   return (
     <div
       ref={ref}
       className="lw-rider"
       data-phase={phase}
       data-riding={riding ? "true" : "false"}
+      data-sky={sky}
       style={{ "--flight": `${PIECE_FLIGHT}s` } as CSSProperties}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 260 150" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 -64 300 214" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round">
+        {/* Sky, top right: sun, two clouds and the moon. Clouds are drawn last so the sun can hide behind them. */}
+        <g className="lw-sky">
+          <g className="lw-sun">
+            <g className="lw-sun-rays" strokeWidth="3">
+              {Array.from({ length: 8 }, (_, i) => (
+                <line key={i} x1="250" y1="-50" x2="250" y2="-56" transform={`rotate(${i * 45} 250 -30)`} />
+              ))}
+            </g>
+            <circle cx="250" cy="-30" r="12" fill="#FFD54A" stroke="#FFD54A" strokeWidth="2" />
+          </g>
+          <mask id="lw-moon-cut">
+            <rect x="150" y="-70" width="150" height="80" fill="#fff" stroke="none" />
+            <circle cx="211" cy="-50" r="10" fill="#000" stroke="none" />
+          </mask>
+          <g className="lw-moon">
+            <circle cx="204" cy="-44" r="12" fill="#EEF1FF" stroke="none" mask="url(#lw-moon-cut)" />
+          </g>
+          <g className="lw-cloud lw-cloud-a">
+            <path
+              d="M214 -14h34a10 10 0 0 0 0-20 14 14 0 0 0-26-4 10 10 0 0 0-8 24z"
+              fill="#fff"
+              stroke="none"
+            />
+          </g>
+          <g className="lw-cloud lw-cloud-b">
+            <path
+              d="M246 -6h30a9 9 0 0 0 0-18 12 12 0 0 0-23-3 9 9 0 0 0-7 21z"
+              fill="#fff"
+              stroke="none"
+            />
+          </g>
+        </g>
+
         {/* Road: dashes slide left while riding, so the rider looks like he is moving forward. */}
         <line className="lw-rider-road" x1="6" y1="141" x2="254" y2="141" strokeWidth="3" />
 
