@@ -8,14 +8,15 @@ describe("Project accuracy", () => {
   it("shows the four selected projects on the homepage, voice agent first", () => {
     expect(selectedWork.map((p) => p.title)).toEqual([
       "AI Voice Appointment Setter",
+      "Messenger AI Lead Agent → GoHighLevel",
       "GoHighLevel CRM Pipeline Management",
       "GoHighLevel CRM Lead Automation",
-      "RAG Knowledge Assistant",
     ]);
   });
 
   it("keeps every other project available as a case study", () => {
     expect(moreWork.map((p) => p.title)).toEqual([
+      "RAG Knowledge Assistant",
       "Facebook Messenger AI Chatbot",
       "HR Job Posting & Evaluation Assistant",
       "Zapier & Make.com Automations",
