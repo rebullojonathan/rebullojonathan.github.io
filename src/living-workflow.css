@@ -4152,3 +4152,123 @@ button:focus-visible > .lw-shot-hint {
     display: none;
   }
 }
+
+/* Footer rider: sticks assemble into a stick figure on a square-wheeled bike, then he rides.
+   Animations run only while the footer is on screen (data-riding="true"). */
+.lw-rider {
+  width: min(260px, 72vw);
+  color: #fff;
+}
+.lw-rider svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.lw-rider-piece {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.lw-rider[data-phase="scattered"] .lw-rider-piece {
+  opacity: 0.5;
+  transform: translate(var(--sx), var(--sy)) rotate(var(--sr));
+}
+.lw-rider[data-phase="assembled"] .lw-rider-piece {
+  opacity: 1;
+  transform: none;
+  transition:
+    transform 1.1s cubic-bezier(0.2, 0.9, 0.25, 1.15) var(--delay),
+    opacity 0.6s ease var(--delay);
+}
+.lw-rider-road {
+  stroke-dasharray: 14 12;
+  opacity: 0.55;
+  transition: opacity 0.6s ease 1.2s;
+}
+.lw-rider[data-phase="scattered"] .lw-rider-road {
+  opacity: 0;
+}
+
+/* Riding loop. Square wheels turn 90 degrees per bump, so the bounce and the wheel stay in step. */
+.lw-rider-wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lw-rider-roll 2.4s linear infinite;
+}
+.lw-rider-bounce {
+  animation: lw-rider-bump 0.6s ease-in-out infinite;
+}
+.lw-rider-leg {
+  transform-box: view-box;
+  transform-origin: 108px 74px;
+  animation: lw-rider-pedal 0.6s ease-in-out infinite alternate;
+}
+.lw-rider-leg-back {
+  opacity: 0.55;
+  animation-delay: -0.6s;
+}
+.lw-rider-road {
+  animation: lw-rider-road 0.45s linear infinite;
+}
+.lw-rider[data-riding="false"] .lw-rider-wheel,
+.lw-rider[data-riding="false"] .lw-rider-bounce,
+.lw-rider[data-riding="false"] .lw-rider-leg,
+.lw-rider[data-riding="false"] .lw-rider-road {
+  animation-play-state: paused;
+}
+@keyframes lw-rider-roll {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes lw-rider-bump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes lw-rider-pedal {
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(12deg);
+  }
+}
+@keyframes lw-rider-road {
+  to {
+    stroke-dashoffset: 26;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lw-rider-wheel,
+  .lw-rider-bounce,
+  .lw-rider-leg,
+  .lw-rider-road {
+    animation: none;
+  }
+}
+
+/* Place the rider in the empty space above the footer message on desktop. */
+@media (min-width: 1024px) {
+  .lw-footer-cta {
+    grid-template-rows: 1fr auto auto;
+  }
+  .lw-footer-headline {
+    grid-row: 1 / 4;
+  }
+  .lw-rider {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+  }
+  .lw-footer-message {
+    grid-row: 2;
+  }
+  .lw-footer-button {
+    grid-row: 3;
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { RefObject } from "react";
 import { BookCallButton } from "@/components/booking-dialog";
+import { FooterRider } from "@/components/footer-rider";
 import { bookingEnabled } from "@/lib/booking";
 import { site } from "@/lib/site";
 
@@ -90,6 +91,7 @@ export function CurtainFooter() {
             </span>
             <span className="lw-swap-new">Smart automation.</span>
           </h2>
+          <FooterRider />
           <p className="lw-footer-message">
             Have a workflow in mind? Let&rsquo;s explore how automation can simplify your business
             operations.
